@@ -10,10 +10,11 @@ class Message:
         self.type = "ELECT"
 
 class Elect:
-    def __init__(self, port_in):
+    def __init__(self, port_in, next_node):
         global leader_port, leader_id
         self.id = uuid4()
         #shoould have value of the next noeud
+        self.next_node = next_node
         leader_id = self.id
         leader_port = port_in
 
