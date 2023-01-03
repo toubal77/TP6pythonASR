@@ -30,4 +30,5 @@ class Elect:
     def envoyer_a(self, M):
         M=M
         #bahratli, normalement khasna attribue next_node bsh f projet
-        #basah f les instructions ta3 projet marahach dayratah
+        # f les instructions ta3 projet marahach dayratah prof
+        # make some research in google
