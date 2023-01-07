@@ -21,9 +21,15 @@ class Elect:
         leader_id = self.id
         leader_port = port_in
 
+    #remarque: la fonction uuid qui genere un ID unique return un ID de 128 bit
+    # on converte 128 bit value en valeur INT afin de pouvoir la compare
+
+
+    #fonction getter: pour avoir ID de leader
     def getIdElectSelected(self):
         return int(leader_id)
 
+    # fonction getter: pour avoir PORT de leader
     def getPortElectSelected(self):
         return int(leader_port)
 
