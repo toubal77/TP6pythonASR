@@ -1,3 +1,5 @@
+#TOUBAL ZINE-EDDINE SID GROUPE3
+#BENALI MOHAMMED YACINE SID GROUPE3
 from uuid import uuid4
 
 leader_id = 0
@@ -10,26 +12,30 @@ class Message:
         self.type = "ELECT"
 
 class Elect:
-    def __init__(self, port_in, next_node):
+    def __init__(self, port_in):
         global leader_port, leader_id
         self.id = uuid4()
-        #shoould have value of the next noeud
-        self.next_node = next_node
+        self.port = port_in
+        self.leader = False
+        self.participe = False
         leader_id = self.id
         leader_port = port_in
 
-    def sur_reception_de(self,M):
-        global leader_id, leader_port
-        if M.id_elect > leader_id :
-            leader_id = M.id_elect
-            leader_port = M.port_elect
-        else:
-            M.id_elect = leader_id
-            M.port_elect = leader_port
-        self.envoyer_a(M)
+    def getIdElectSelected(self):
+        return int(leader_id)
 
-    def envoyer_a(self, M):
-        M=M
-        #bahratli, normalement khasna attribue next_node bsh f projet
-        # f les instructions ta3 projet marahach dayratah prof
-        # make some research in google
+    def getPortElectSelected(self):
+        return int(leader_port)
+
+    def sur_reception_de(self, M):
+        global leader_id, leader_port
+        print("la comparaison vas etre entre %d et %d"%(int(M.id_elect),int(leader_id)))
+        if int(M.id_elect) > int(leader_id):
+            leader_id = int(M.id_elect)
+            leader_port = int(M.port_elect)
+            print("le noeud selectionne apres comparaison est %d" % (leader_id))
+        else:
+            M.id_elect = int(leader_id)
+            M.port_elect = int(leader_port)
+            print("le noeud selectionne apres comparaison est %d" % (int(M.id_elect)))
+
