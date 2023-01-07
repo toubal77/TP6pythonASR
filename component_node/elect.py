@@ -34,6 +34,8 @@ class Elect:
         return int(leader_port)
 
     def sur_reception_de(self, M):
+        #on converti M.id_elect et leader_id en INT car on les a recu en bytes chaine de caractere.decode()
+        #donc on les converti en INT pour pouvoir les comparer
         global leader_id, leader_port
         print("la comparaison vas etre entre %d et %d"%(int(M.id_elect),int(leader_id)))
         if int(M.id_elect) > int(leader_id):
